@@ -1,0 +1,21 @@
+settings ={
+	orientation = {
+		default = "landscapeRight",  -- portrait, portraitUpsideDown
+        	supported ={
+        	    "landscapeRight", "landscapeLeft"
+        	}
+	},
+	iphone ={
+
+	},
+	android = {
+	    usesPermissions ={
+
+        },
+        usesFeatures ={
+
+        }
+	}
+
+
+}
