@@ -1,5 +1,5 @@
-_W = display.contentWidth
-_H = display.contentHeight
+_W = display.viewableContentWidth
+_H = display.viewableContentHeight
 
 local background =display.newRect( 0,0,_W, _H )
 background:setFillColor(255,255,255)
@@ -21,7 +21,7 @@ function foo:touch(e)
 		print (self.name)
 	elseif (self.hasFocus) then 
 		if(e.phase=="moved") then
-			self.alpha =self.alpha - 0.01;
+			self.alpha =self.alpha - 0.1;
 		elseif e.phase =="ended" or e.phase =="cancelled" then 
 			display.getCurrentStage():setFocus(nil)
 			self.hasFocus = false
@@ -29,4 +29,15 @@ function foo:touch(e)
 	end
 	return true
 end
+
+function handleTouch(e)
+	if (e.phase == "began" ) then 
+		-- nothing to do here
+	elseif (e.phase=="moved") then
+		bar.alpha = bar.alpha+0.1 
+	elseif(e.phase == "ended" or e.phase == "cancelled") then
+		-- nothing to do here
+	end
+end
 foo:addEventListener( "touch", foo )
+Runtime:addEventListener("enterFrame", handleTouch )
